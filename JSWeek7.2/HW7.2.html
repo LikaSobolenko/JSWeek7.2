@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="num">
+    <button onclick="calculate()">Вычислить</button>
+    <div>
+        <div>Цифры из числа: <span id="result"></span></div>
+        <div>Количество цифр в числе: <span id="length"></span></div>
+        <div>Сумма цифр числа: <span id="sum"></span></div>
+        <div>Число в обратном порядке: <span id="reversed"></span></div>
+
+    </div>
+
+    <script>
+        function myFunction() {
+            document.getElementById('num').value = '';
+        }
+
+        function calculate() {
+            const num = document.getElementById('num').value; //Это строка
+            if (num) {
+                const numbers = Array.from(num, Number); //Делаем массив и меняем строки на числа
+                console.log(numbers);
+                //1. Вывод получившегося массива
+                document.getElementById('result').innerHTML =
+                    numbers.join(", ");
+                //2. Количество цифл в числе через длину получившегося массива
+                document.getElementById('length').innerHTML =
+                    numbers.length;
+                //3. Сумма цифр числа
+                document.getElementById('sum').innerHTML =
+                    numbers.reduce((sum, n) => sum + n);
+                //4. Число в обратном порядке
+                document.getElementById('reversed').innerHTML =
+                    String(num).split('').reverse().join('');
+
+                myFunction();
+            }
+        };
+    </script>
+</body>
+
+</html>
